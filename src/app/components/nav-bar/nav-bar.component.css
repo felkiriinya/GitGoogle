@@ -1,0 +1,16 @@
+.navbar {
+    justify-content: space-between;
+    background-color: #201e1e;
+    color: white;
+  }
+  a {
+    font-size: 1.4rem;
+    cursor: pointer;
+    padding-right: 1rem;
+    text-decoration: none;
+    color: white;
+  }
+   
+  .links {
+    display: flex;
+  }
