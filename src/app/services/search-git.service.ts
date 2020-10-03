@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { resolve } from 'dns';
+import { environment } from 'src/environments/environment';
+
 import { NumberOfRepo } from '../models/number-of-repo';
 import { RepoByName } from '../models/repo-by-name';
 import { Repositories } from '../models/repositories';
@@ -46,7 +47,7 @@ export class SearchGitService {
     // 'https://api.github.com/users/daneden?access_token=' + apiKey
 
     let promise =new Promise ((resolve, reject)=>{
-        this.http.get<userApiResponse>(`https://api.github.com/search/users?q=${username}`).toPromise().then(response =>{
+        this.http.get<userApiResponse>(`${environment.gitUrl}${username}?client_id=${environment.apiKey}`).toPromise().then(response =>{
             this.user.name = response.name
             this.user.login= response.login
             this.user.bio  = response.bio
@@ -70,4 +71,6 @@ export class SearchGitService {
     return promise
 
    }
+
+   
 }

@@ -1,0 +1,19 @@
+#content {
+    padding: 6%;
+  }
+  
+  h2 {
+    font-size: 2rem;
+  }
+  
+  .tabcontent {
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .media img {
+    max-width: 15rem;
+    height: 15rem;
+    object-fit: cover;
+    border-radius: 7.5rem;
+  }

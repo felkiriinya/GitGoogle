@@ -1,4 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Users } from 'src/app/models/users';
+import { SearchGitService } from 'src/app/services/search-git.service';
 
 @Component({
   selector: 'app-my-profile',
@@ -7,9 +10,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MyProfileComponent implements OnInit {
 
-  constructor() { }
+user:Users;
 
-  ngOnInit(): void {
+
+  constructor(private searchGitService: SearchGitService, private http:HttpClient) { }
+
+  ngOnInit(){
+
+    this.searchGitService.userInfoRequest("felkiriinya")
+    this.user = this.searchGitService.user
   }
 
 }

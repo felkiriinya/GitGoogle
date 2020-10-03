@@ -1,1 +1,32 @@
-<p>my-profile works!</p>
+<div id="content" class="container-fluid">
+    <h2 class="text-center">My Profile</h2>
+    <div class="media">
+        <img src="{{user.avatar_url}}" class="mr-3 img-responsive img-circle" alt="">
+
+        <div class="media-body">
+
+            <mat-tab-group dynamicHeight>
+                <mat-tab label="User Info">
+                    <div class="tabcontent userInfo">
+                        <p *ngIf="user.name"><span>Name:</span>&nbsp;&nbsp; {{user.name}}</p>
+                        <p *ngIf="user.login"><span>Username:</span>&nbsp;&nbsp;{{user.login}}</p>
+                        <p>Followers:<span>&nbsp;&nbsp; {{user.followers}}</span></p>
+                        <p>Following:<span>&nbsp;&nbsp; {{user.following}}</span></p>
+                        <p *ngIf="user.public_repos"><span>Number of public repositories:</span>&nbsp;&nbsp; {{user.public_repos}}</p>
+                        <p *ngIf="user.bio"><span>Bio:</span>&nbsp;&nbsp; {{user.bio}}</p>
+                        <p *ngIf="user.created_at"><span>Created:</span>&nbsp;&nbsp; {{user.created_at|date}}</p>
+                        <p *ngIf="user.email"><span>Email:</span>&nbsp;&nbsp;{{user.email}}</p>
+        
+                    </div>
+
+                </mat-tab>
+
+            </mat-tab-group>
+
+
+
+        </div>
+
+    </div>
+
+</div>
