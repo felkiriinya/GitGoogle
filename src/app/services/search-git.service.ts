@@ -72,5 +72,43 @@ export class SearchGitService {
 
    }
 
-   
+   userRepoRequest(username){
+       interface repoApiResponse{
+         name: string,
+         description: string,
+         language: string,
+         html_url: string,
+         forks: number
+       }
+       let promise = new Promise ((resolve,reject)=>{
+           let arrayLength = this.repos.length;
+
+           for (let i=0; i<arrayLength; i++){
+               this.repos.pop()
+           }
+
+           this.http.get<repoApiResponse>(`${environment.gitUrl}${username}/repos?client_id=${environment.apiKey}`).toPromise().then(response=>{
+               for (let i=0; i<this.user.public_repos; i++){
+                   let repo = new Repositories("","","","",0)
+
+                   repo.name = response[i]["name"]
+                   repo.description =response[i]["description"]
+                   repo.language=response[i]["language"]
+                   repo.html_url = response [i]["html_url"]
+                   repo.forks = response[i]["forks"]
+
+                   this.repos.push(repo)
+               }
+               resolve()
+           },
+
+           error => {
+               console.log("an error occurred")
+               reject(error)
+           }
+           )
+       })
+
+       return promise
+   }
 }
