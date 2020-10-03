@@ -3,39 +3,31 @@
         GIT GOOGLE
     </div>
     <div class="links">
-        <a routerLink="/home" routerLinkActive="activeRoute" >Home</a>
-        <a >Find a user</a>
+        <a routerLink="/home" routerLinkActive="activeRoute" >Home</a>&nbsp;&nbsp;
+        <a (click)=toggleUserForm() *ngIf="!isShowUserForm">Find a user</a>
 
-        <!-- <form #userForm= "ngForm">
-            <div class="input-group">
+        <form #userForm= "ngForm" *ngIf="isShowUserForm">
+            <div class="input-group" style="width: 13rem">
                 <input type="text"
                         class="form-control"
                         placeholder="Search by username"
                         name="username"
+                        
                         [(ngModel)]="username"
-                        >
-                <button>
-                    <a> <i class="fas fa-search"></i></a>
-                </button>        
+                        style="background-color: transparent; color: white;">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" (click)="findProfile();toggleUserForm(); userForm.reset()" routerLink="/name-result" routerLinkActive="activeRoute">
+                        <a> <i class="fas fa-search" style="width: 0.4rem;"></i></a>
+                    </button> 
+
+                </div>        
+                       
             </div>
 
-        </form> -->
+        </form>&nbsp;&nbsp;
         <a >Find a repo</a>
 
-        <!-- <form #repoForm= "ngForm">
-            <div class="input-group">
-                <input type="text"
-                        class="form-control"
-                        placeholder="Search by reponame"
-                        name="reponame"
-                        [(ngModel)]="name"
-                        >
-                <button>
-                    <a> <i class="fas fa-search"></i></a>
-                </button>        
-            </div>
-
-        </form> -->
+        
 
     </div>
 

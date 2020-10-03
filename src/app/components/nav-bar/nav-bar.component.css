@@ -17,3 +17,16 @@
     display: flex;
   }
   
+  ::placeholder{
+      font-size: 0.9rem;
+      
+  }
+  
+.input-group-append button:hover {
+    background-color: transparent;
+  }
+  
+  .input-group-append button {
+    border-color: white;
+  }
+  

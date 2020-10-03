@@ -1,1 +1,82 @@
-<p>name-result works!</p>
+<div id="content" class="container-fluid">
+    <div *ngIf="user.login === 'User Not found'" class="text-center">
+        <p>
+            We couldn't find any users matching {{username}}
+        </p>
+        <p>
+            Please enter a valid user name
+        </p>
+
+    </div>
+    <div *ngIf="user.login !== 'User not found'">
+        <h2 class="text-center">{{user.login|titlecase}}'s Profile</h2>
+    <div class="media">
+        <img src="{{user.avatar_url}}" class="mr-3 img-responsive img-circle" alt="">
+
+        <div class="media-body">
+
+            <mat-tab-group dynamicHeight>
+                <mat-tab label="User Info">
+                    <div class="tabcontent userInfo">
+                        <p *ngIf="user.name"><span>Name:</span>&nbsp;&nbsp; {{user.name}}</p>
+                        <p *ngIf="user.login"><span>Username:</span>&nbsp;&nbsp;{{user.login}}</p>
+                        <p><span>Followers:</span>{{user.followers}}</p>
+                        <p><span>Following:</span>{{user.following}}</p>
+                        <p *ngIf="user.public_repos"><span>Number of public repositories:</span>&nbsp;&nbsp; {{user.public_repos}}</p>
+                        <p *ngIf="user.bio"><span>Bio:</span>&nbsp;&nbsp; {{user.bio}}</p>
+                        <p *ngIf="user.created_at"><span>Created:</span>&nbsp;&nbsp; {{user.created_at|date}}</p>
+                        <p *ngIf="user.email"><span>Email:</span>&nbsp;&nbsp;{{user.email}}</p>
+        
+                    </div>
+
+                </mat-tab>
+
+                <mat-tab label="Repositories">
+                    <div class="tabcontent cards">
+                        <div class="card" *ngFor="let repo of repos">
+                            <div class="card-body">
+                                <div class="card-title">
+
+                                    <a href="{{repo.html_url}}">{{repo.name|titlecase}}</a>
+
+                                </div>
+
+                                <div class="card-text">
+                                    <p *ngIf="repo.description">{{repo.description}}</p>
+                                    <p *ngIf="!repo.description">No description is available for this repository</p>
+
+                                </div>
+                                <div class="card-bottom">
+                                    <div *ngIf="repo.language">
+                                        <i class="fas fa-circle"></i>&nbsp;{{repo.language}}
+                                      </div>&nbsp;&nbsp;
+                                      <div *ngIf="!repo.language">
+                                        <i class="fas fa-circle"></i>&nbsp;Undefined
+                                      </div>&nbsp;&nbsp;
+                                      <div>
+                                        {{repo.forks}}&nbsp;<i class="fas fa-code-branch"></i>&nbsp;Forks
+                                        </div>
+                                        
+
+                                </div>
+
+                
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </mat-tab>
+
+            </mat-tab-group>
+
+
+
+        </div>
+
+    </div>
+    </div>
+
+</div>
