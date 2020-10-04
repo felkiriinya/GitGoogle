@@ -59,7 +59,7 @@ The technologies used Html,Css,Typescript and Bootstrap
 ## Support and Contact Details
 Should you have any feedback,questions or recommendations, feel free to email me at [felkiriinya@gmail.com](mailto:felkiriinya@gmail.com)
 
-## [License]()
+## [License](https://github.com/felkiriinya/Github-search/blob/master/LICENSE)
 
 Copyright (c) 2020 [Felista Kiriinya](https://github.com/felkiriinya)
 
