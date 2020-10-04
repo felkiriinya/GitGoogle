@@ -1,1 +1,34 @@
-<p>repo-result works!</p>
+<div *ngIf="numberOfRepos.total_count === 0" class="text-center" style="font-size: 1.5rem; padding-top: 6%;">
+    
+    <p>We couldn’t find any repository matching '{{reponame}}'</p><br>
+    <p>Please enter a valid repository name.</p>
+</div>
+
+
+<div *ngIf="numberOfRepos.total_count !== 0">
+    <p id="heading" class="text-center">A total of {{numberOfRepos.total_count}} repositories were detected.</p>
+    
+    <div class="cards">
+      <div class="card" *ngFor="let repoByName of reposByName">
+        <div class="card-body">
+          <div class="card-title"><a href={{repoByName.html_url}} target="_blank"
+              >{{repoByName.name|titlecase}}</a></div>
+          <p class="card-text" *ngIf="repoByName.description">{{repoByName.description}}</p>
+          <p class="card-text" *ngIf="!repoByName.description">No description is available for this repository</p>
+          <br>
+          <div class="card-bottom">
+            <div *ngIf="repoByName.language">
+              <i class="fas fa-circle"></i>&nbsp;{{repoByName.language}}
+            </div>&nbsp;&nbsp;
+            <div *ngIf="!repoByName.language">
+              <i class="fas fa-circle"></i>&nbsp;Undefined
+            </div>&nbsp;&nbsp;
+            <div>
+              {{repoByName.forks}}&nbsp;<i class="fas fa-code-branch"></i>&nbsp;Forks
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

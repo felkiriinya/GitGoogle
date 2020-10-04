@@ -25,10 +25,26 @@
             </div>
 
         </form>&nbsp;&nbsp;
-        <a >Find a repo</a>
+        <a (click)=toggleRepoForm() *ngIf= "!isShowRepoForm" >Find a repo</a>
 
-        
+        <form #repoForm= "ngForm" *ngIf="isShowRepoForm">
+            <div class="input-group" style="width: 13rem">
+                <input type="text"
+                        class="form-control"
+                        placeholder="Search by reponame"
+                        name="reponame"
+                        
+                        [(ngModel)]="reponame"
+                        style="background-color: transparent; color: white;">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" (click)="findRepo(); toggleRepoForm(); repoForm.reset()" routerLink="/repo-result" routerLinkActive="activeRoute">
+                        <a> <i class="fas fa-search" style="width: 0.4rem;"></i></a>
+                    </button> 
 
+                </div>        
+                       
+            </div>
+        </form>    
     </div>
 
 </div>

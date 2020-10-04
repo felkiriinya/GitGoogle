@@ -18,7 +18,7 @@ export class NavBarComponent implements OnInit {
     user:Users;
     repos:Repositories[];
     nameResult: NameResultComponent;
-    repoByName: RepoByName[];
+    reposByName: RepoByName[];
     reponame:string;
 
     isShowUserForm =false;
@@ -32,12 +32,26 @@ export class NavBarComponent implements OnInit {
     toggleUserForm(){
         this.isShowUserForm =!this.isShowUserForm;
     }
+
+    toggleRepoForm(){
+        this.isShowRepoForm =!this.isShowRepoForm;
+    }
+
     findProfile(){
         this.router.navigate(['/name-result',this.username])
         this.searchGitService.userInfoRequest(this.username)
         this.user = this.searchGitService.user
         this.searchGitService.userRepoRequest(this.username)
         this.repos =this.searchGitService.repos
+    }
+
+    findRepo(){
+        this.router.navigate(['/repo-result',this.reponame])
+        this.searchGitService.repoByNameRequest(this.reponame)
+        this.reposByName = this.searchGitService.reposByName
+        this.searchGitService.repoByNameNumberRequest(this.reponame)
+        this.numberOfRepos =this.searchGitService.numberOfRepos
+
     }
 
   ngOnInit(): void {

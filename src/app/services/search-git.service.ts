@@ -111,4 +111,66 @@ export class SearchGitService {
 
        return promise
    }
+//requesting the repos by their names
+
+repoByNameRequest(reponame){
+
+    interface repoByNameApiResponse{
+
+        items:[]
+    }
+
+    let promise = new Promise((resolve,reject)=>{
+        let arrayLength= this.reposByName.length;
+
+        for(let i=0; i<arrayLength; i++){
+
+            this.reposByName.pop()
+        }
+
+        this.http.get<repoByNameApiResponse>(`https://api.github.com/search/repositories?q=${reponame}`).toPromise().then(response=>{
+            for(let i=0; i<response.items.length; i++){
+                let repoByName = new RepoByName ("","","","",0)
+
+                repoByName.name=response.items[i]["name"]
+                repoByName.description=response.items[i]["description"]
+                repoByName.language=response.items[i]["language"]
+                repoByName.html_url=response.items[i]["html_url"]
+                repoByName.forks=response.items[i]["forks"]
+            }
+
+            resolve()
+        },
+          error=>{
+              console.log("an error occured")
+              reject(error)
+          }
+        )
+    })
+
+    return promise
 }
+repoByNameNumberRequest(reponame){
+    interface repoByNameNumberApiResponse{
+      total_count:number
+      } 
+      let promise = new Promise((resolve,reject)=>{
+        this.http.get<repoByNameNumberApiResponse>(`https://api.github.com/search/repositories?q=${reponame}`).toPromise().then(response=>{
+          this.numberOfRepos.total_count =response.total_count
+          console.log("Number of repos",this.numberOfRepos)
+          resolve()
+          console.log("Numbers",this.numberOfRepos.total_count)
+        },
+        error=>{
+          this.numberOfRepos.total_count= 0; 
+          console.log("an error occured")
+          reject(error)
+        })
+      })
+      return promise
+  }
+}
+
+
+
+
