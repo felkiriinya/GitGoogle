@@ -1,5 +1,5 @@
 # Github
-#### A github finder that allows people to find github users by their username and github repo, 4/10/2020
+#### A github finder that allows people to find github users by their username and github repo by their repo name, 4/10/2020
 #### By Felista Kiriinya
 
 ## Description
@@ -7,9 +7,13 @@ On the application's landing page we have a brief description of what the applic
 
 ![landing]()
 
+## Live link
+
+Visit the application on 
+
 ## Figma Link
 
-This is the link to my [figma]() design 
+This is the link to my [figma](https://www.figma.com/file/NpUH2PxJMCGDT8F5Ca3f7i/Github-Search?node-id=0%3A1) design 
 
 ## Development
 
