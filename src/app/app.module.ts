@@ -15,6 +15,7 @@ import { DaysPassedPipe } from './pipes/days-passed.pipe';
 import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './components/home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     NameResultComponent,
     NavBarComponent,
     VisitedRepoDirective,
-    DaysPassedPipe
+    DaysPassedPipe,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
