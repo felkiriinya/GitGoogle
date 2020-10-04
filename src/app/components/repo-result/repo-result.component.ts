@@ -20,12 +20,12 @@ export class RepoResultComponent implements OnInit {
     repoResult(){
       
         // this.reponame = this.route.snapshot.paramMap.get('reponame')
-        this.searchGitService.repoByNameRequest(this.reponame).then((response) =>{
+        this.searchGitService.repoByNameRequest(this.reponame)
           this.reposByName =this.searchGitService.reposByName;
-        });
-        this.searchGitService.repoByNameNumberRequest(this.reponame).then((response) =>{
+    
+        this.searchGitService.repoByNameNumberRequest(this.reponame)
           this.numberOfRepos =this.searchGitService.numberOfRepos;
-        });
+    
         console.log(this.numberOfRepos)
       
       

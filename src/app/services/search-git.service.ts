@@ -137,6 +137,8 @@ repoByNameRequest(reponame){
                 repoByName.language=response.items[i]["language"]
                 repoByName.html_url=response.items[i]["html_url"]
                 repoByName.forks=response.items[i]["forks"]
+
+                this.reposByName.push(repoByName)
             }
 
             resolve()
