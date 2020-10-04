@@ -47,7 +47,7 @@ export class SearchGitService {
     // 'https://api.github.com/users/daneden?access_token=' + apiKey
 
     let promise =new Promise ((resolve, reject)=>{
-        this.http.get<userApiResponse>(`${environment.gitUrl}${username}?client_id=${environment.apiKey}`).toPromise().then(response =>{
+        this.http.get<userApiResponse>(`https://api.github.com/users/${username}?client_id=1179d43fb4eb61d15d6b3855fd52434a802d74e4`).toPromise().then(response =>{
             this.user.name = response.name
             this.user.login= response.login
             this.user.bio  = response.bio
@@ -87,7 +87,7 @@ export class SearchGitService {
                this.repos.pop()
            }
 
-           this.http.get<repoApiResponse>(`${environment.gitUrl}${username}/repos?client_id=${environment.apiKey}`).toPromise().then(response=>{
+           this.http.get<repoApiResponse>(`https://api.github.com/users/${username}?client_id=1179d43fb4eb61d15d6b3855fd52434a802d74e4`).toPromise().then(response=>{
                for (let i=0; i<this.user.public_repos; i++){
                    let repo = new Repositories("","","","",0)
 
