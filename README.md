@@ -5,7 +5,6 @@
 ## Description
 On the application's landing page we have a brief description of what the application does. By clicking on the arrows on the bottom of the page one is able to view my profile, clicking on the find user displays a user input of where one is supposed to search for any github user you want. Similarly for the 'Find a repo' button. The search results then display relevant information on the Github user and Github repository respectively.
 
-![landing]()
 
 ## Live link
 
